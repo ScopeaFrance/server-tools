@@ -11,4 +11,4 @@ raven
 checksumdir
 python-stdnum
 pyOpenSSL
-facturx
+factur-x
