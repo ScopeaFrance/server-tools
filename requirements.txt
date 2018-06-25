@@ -12,3 +12,4 @@ checksumdir
 python-stdnum
 pyOpenSSL
 factur-x
+bokeh
