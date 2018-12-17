@@ -3,3 +3,6 @@ raven
 pysftp
 acme_tiny
 IPy
+pyOpenSSL
+factur-x
+bokeh
