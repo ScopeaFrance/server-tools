@@ -13,4 +13,4 @@ python-stdnum
 pyOpenSSL
 factur-x
 bokeh
-pandas
+pandas==0.22.0
