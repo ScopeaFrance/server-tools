@@ -6,3 +6,4 @@ IPy
 pyOpenSSL
 factur-x
 bokeh
+weboob
