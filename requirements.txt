@@ -21,3 +21,4 @@ raven
 openpyxl
 xlrd
 xlwt
+pysftp
