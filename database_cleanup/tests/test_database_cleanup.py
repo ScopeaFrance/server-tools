@@ -3,12 +3,11 @@
 from psycopg2 import ProgrammingError
 from odoo.modules.registry import Registry
 from odoo.tools import config, mute_logger
-from odoo.tests.common import TransactionCase, at_install, post_install
+from odoo.tests.common import TransactionCase, tagged
 
 
-# Use post_install to get all models loaded more info: odoo/odoo#13458
-@at_install(False)
-@post_install(True)
+# Use post_install to get all models loaded, more info: odoo/odoo#13458
+@tagged('post_install', '-at_install')
 class TestDatabaseCleanup(TransactionCase):
     def setUp(self):
         super(TestDatabaseCleanup, self).setUp()
@@ -95,7 +94,8 @@ class TestDatabaseCleanup(TransactionCase):
         # reference to it
         original_registry = Registry.registries[self.env.cr.dbname]
         config.options['test_enable'] = False
-        purge_modules.purge_all()
+        with mute_logger('odoo.modules.graph', 'odoo.modules.loading'):
+            purge_modules.purge_all()
         config.options['test_enable'] = True
         # must be removed by the wizard
         self.assertFalse(self.env['ir.module.module'].search([
